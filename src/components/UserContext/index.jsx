@@ -1,13 +1,26 @@
-import React from 'react'
+import React from 'react';
 
-const UserContext = React.createContext(null)
+export const UserContext = React.createContext(null)
 
-const UserContextProvider = ({children})=> {
-   return <UserContext.Provider
-   value={{users:[{name:'abel',email:'abel@mit.edu',password:'secret',balance:100}], signedInUser: 'abel',}}>
+const UserContextProvider = ({ children })=> {
+  return (
+    <UserContext.Provider
+      value={{
+        users: [
+          {
+            name:'abel',
+            email:'abel@mit.edu',
+            password:'secret',
+            balance:100,
+          },
+         ],
+         signedInUser: 'abel',
+       }}
+    >
    
       {children} 
-   </UserContext.Provider> 
-}
+    </UserContext.Provider> 
+   )
+};
+export default UserContextProvider;
 
-export default UserContextProvider
