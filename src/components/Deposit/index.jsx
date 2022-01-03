@@ -6,11 +6,12 @@ import { getSuggestedQuery } from '@testing-library/react';
 import { userSetter } from 'core-js/fn/symbol';
 const Deposit = () => {
   const ctx = React.useContext(UserContext);
-  const [show, setShow]             = React.useState(true);
+  
+  const [show, setShow]                         = React.useState(true);
   const [validTransaction, setValidTransaction] = React.useState(false);
   const [status, setStatus]                     = React.useState('');
   const [depositAmount, setDepositAmount]       = React.useState('');
-  const [total, setTotal]                       = React.useState(ctx.users[0].balance);
+  const [total, setTotal]                       = React.useState(100);
   const [isSuccess, setIsSuccess]               = React.useState(false);
   
 
@@ -23,7 +24,7 @@ const Deposit = () => {
         return setValidTransaction(false);
       }
       if (amount !== "" && amount !== "-" && !Number(amount)) {
-        setStatus("Error: Please introduce numbers only");
+        setStatus("Error: Enter numbers only");
         setIsSuccess(false);
         return setValidTransaction(false);
       }
@@ -58,6 +59,8 @@ const Deposit = () => {
     setStatus('Success: Your deposit transaction has been successfully completed!');
     e.preventDefault(); 
     setShow(false);  
+   // setTotal(100);
+   // setDepositAmount(e.currentTarget.value);
   };
   //Update total deposit balance
   const updateCustomerBalance =(newTotal) => {
@@ -71,11 +74,12 @@ const Deposit = () => {
     validateTransaction={validateDeposit}
     handleSubmit={handleSubmit}
     validTransaction={validTransaction}
+     clearForm={clearForm}
     />
   );  
     
     return (
-      
+      <>
     <Card
      bgcolor="primary"
       header="Deposit"
@@ -83,18 +87,10 @@ const Deposit = () => {
       width="18rem"
       status={status}
       successFlag={isSuccess}
-      body={show ? (
-             <>
-                {customerDeposit}
-                </>
-      ) : (
-        <>
-        <h5>Success</h5>
-               <button type="submit"  className="btn btn-outline-dark" value="submit" onClick= {clearForm}>Make Another deposit</button>
+      body={customerDeposit}           
+      />              
+  </>
       
-            </>
-      )}           
- />
  );  
 }
 
