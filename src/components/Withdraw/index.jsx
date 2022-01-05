@@ -53,9 +53,9 @@ const Withdraw = () =>{
   
       return () => mounted = false;
     });
-    const clearForm = () =>{
-      setWithdrawalAmount('');
-      setShow(true);    
+    const clearForm = (e) =>{
+    setWithdrawalAmount('');
+     setShow(true);        
      }
     const handleSubmit = (e) => {
       let newTotal = total - withdrawalAmount;
@@ -98,9 +98,9 @@ const Withdraw = () =>{
         validTransaction={validTransaction}
       />
     );
-  
+      
     return (
-    
+        <>
         <Card
          bgcolor="primary"
           header="Withdraw"
@@ -108,19 +108,12 @@ const Withdraw = () =>{
           maxWidth="18rem"
           status={status}
           successFlag={isSuccess}
-          body={show ? (
-                 <>
-               {customerWithdrawal}
+          body={customerWithdrawal}
+                 />
+              
                </>
-         ) : (
-       <>
-       <h5>Success</h5>
-              <button type="submit"  className="btn btn-outline-dark" value="submit" onClick= {clearForm}>Make Another withdrawal</button>
-     
-           </>
-     )}           
-/>
-);  
+                   
+ );  
 }
 
   
