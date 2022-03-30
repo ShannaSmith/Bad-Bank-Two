@@ -11,7 +11,7 @@ home-background {
   
   .home-background::before {
     content: '';
-    background-image: url("/src/img/bank-person.jpg");
+    background-image: url("./bank.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     position: absolute;
@@ -296,4 +296,10 @@ home-background {
     position: relative;
     color: #fff !important;
     padding: 0.2em 0;
+  }
+  .bbnav a{
+    margin-right: 20px;
+  }
+  .bbnav a:hover{
+    border-bottom: 2px solid white;
   }
